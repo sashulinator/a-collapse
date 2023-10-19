@@ -34,7 +34,7 @@ export default function Collapse(props: CollapseProps): JSX.Element {
   return (
     <a.div
       {...props.rootProps}
-      style={{ overflow: 'hidden', ...props.rootProps?.style, ...springProps }}
+      style={{ overflow: 'hidden', width: '100%', ...props.rootProps?.style, ...springProps }}
       className={c(
         Collapse.displayName,
         props.className,
