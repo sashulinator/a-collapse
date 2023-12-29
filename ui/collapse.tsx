@@ -5,9 +5,7 @@ import useMeasure from 'react-use-measure'
 
 import { Position, c } from '~/utils/core'
 
-Collapse.displayName = 'a-Collapse'
-
-export interface CollapseProps {
+export interface Props {
   children: React.ReactNode
   isExpanded: boolean
   from?: (CSSProperties & Partial<Position>) | undefined
@@ -18,7 +16,9 @@ export interface CollapseProps {
   className?: string
 }
 
-export default function Collapse(props: CollapseProps): JSX.Element {
+const displayName = 'a-Collapse'
+
+export default function Component(props: Props): JSX.Element {
   const [ref, measure] = useMeasure()
   const viewHeight = measure.height || 'auto'
 
@@ -36,7 +36,7 @@ export default function Collapse(props: CollapseProps): JSX.Element {
       {...props.rootProps}
       style={{ overflow: 'hidden', width: '100%', ...props.rootProps?.style, ...springProps }}
       className={c(
-        Collapse.displayName,
+        displayName,
         props.className,
         props.rootProps?.className,
         props.isExpanded && '--expanded',
@@ -49,3 +49,5 @@ export default function Collapse(props: CollapseProps): JSX.Element {
     </a.div>
   )
 }
+
+Component.displayName = displayName
